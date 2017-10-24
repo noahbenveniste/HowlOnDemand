@@ -13,14 +13,20 @@ import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 public class TrackChunkTest {
 	/** Expected error message for MalformedTrackException thrown by TrackChunk */
 	private static final String ERROR_MSG = "Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long.";
-
+	/** Default chunk string */
+	private static final String DEFAULT = "00000000";
 	/**
 	 * Test method for TrackChunk() (no-arg) constructor
 	 */
 	@Test
 	public void testTrackChunk() {
-		TrackChunk chunk = new TrackChunk();
-		assertEquals("", chunk.getChunk());
+		TrackChunk chunk = null;
+		try {
+			chunk = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
+		assertEquals(DEFAULT, chunk.getChunk());
 	}
 
 	/**
@@ -29,7 +35,12 @@ public class TrackChunkTest {
 	@Test
 	public void testValidChunk() {
 		String invalid = "";
-		TrackChunk c = new TrackChunk();
+		TrackChunk c = null;
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		
 		//Test an invalid track chunk that is null
 		invalid = null;
@@ -189,7 +200,17 @@ public class TrackChunkTest {
 	public void testSetChunk() {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
-		TrackChunk c = new TrackChunk();
+		TrackChunk c = null;
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		
 		//Try setting an invalid chunk string
 		try {
@@ -215,7 +236,12 @@ public class TrackChunkTest {
 	public void testGetChunk() {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
-		TrackChunk c = new TrackChunk();
+		TrackChunk c = null;
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		
 		try {
 			c.setChunk(invalid);
@@ -223,7 +249,7 @@ public class TrackChunkTest {
 		} catch (MalformedTrackException e) {
 			assertEquals(ERROR_MSG, e.getMessage());
 		}
-		assertEquals("", c.getChunk());
+		assertEquals(DEFAULT, c.getChunk());
 		
 		try {
 			c.setChunk(valid);
@@ -240,7 +266,12 @@ public class TrackChunkTest {
 	public void testToString() {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
-		TrackChunk c = new TrackChunk();
+		TrackChunk c = null;
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		
 		try {
 			c.setChunk(invalid);
@@ -248,7 +279,7 @@ public class TrackChunkTest {
 		} catch (MalformedTrackException e) {
 			assertEquals(ERROR_MSG, e.getMessage());
 		}
-		assertEquals("", c.toString());
+		assertEquals(DEFAULT, c.toString());
 		
 		try {
 			c.setChunk(valid);
