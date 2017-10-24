@@ -11,15 +11,18 @@ public class TrackChunk {
 	private String chunk;
 	
 	/**
-	 * Default constructor for the TrackChunk
+	 * Default constructor for the TrackChunk. Chunk field is initialized to an empty string
+	 * by default to avoid NullPointerExceptions. The chunk field must be set with a call to
+	 * setChunk() if this constructor is used.
 	 */
 	public TrackChunk() {
-		//TODO check that this is supposed to just be empty
+		this.chunk = "";
 	}
 	
 	/**
-	 * 
-	 * @throws MalformedTrackException 
+	 * Constructor that creates a TrackChunk with a specified chunk string. A chunk string must contain
+	 * exactly 8 valid hexadecimal digits i.e. 0-9,A-F.
+	 * @throws MalformedTrackException if the chunk string does not meet the aforementioned standards.
 	 */
 	public TrackChunk(String chunk) throws MalformedTrackException {
 		this();
@@ -27,9 +30,9 @@ public class TrackChunk {
 	}
 	
 	/**
-	 * 
-	 * @param chunk the 
-	 * @throws MalformedTrackException 
+	 * Sets the chunk field with a specified chunk string.
+	 * @param chunk a string of exactly 8 valid hexadecimal digits i.e. 0-9,A-F
+	 * @throws MalformedTrackException if the specified chunk does not conform to the aforementioned standards.
 	 */
 	public void setChunk(String chunk) throws MalformedTrackException {
 		if (validChunk(chunk)) {
