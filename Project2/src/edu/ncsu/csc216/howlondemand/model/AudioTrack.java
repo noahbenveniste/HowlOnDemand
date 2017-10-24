@@ -8,24 +8,27 @@ import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 import edu.ncsu.csc216.audioxml.xml.TrackChunkXML;
 
 /**
- * 
+ * Concrete child class of Multimedia. Represents an audio track that
+ * can be streamed. Has a numerical id, title, artist and a collection
+ * of track chunk data to be used when streaming.
  * @author Noah Benveniste
  */
 public class AudioTrack extends Multimedia {
-	/** */
+	/** The index of the next track chunk to be accessed from the collection */
 	private int chunkIndex;
-	/** */
+	/** The artist of the track */
 	private String artist;
-	/** */
+	/** A collection of track chunks to be accessed when streaming */
 	private ArrayList<TrackChunk>  chunks;
 	
 	/**
-	 * 
-	 * @param id
-	 * @param title
-	 * @param artist
+	 * Creates an AudioTrack with an empty collection of chunks
+	 * @param id the track's numerical id
+	 * @param title the title of the track
+	 * @param artist the track's artist
+	 * @throws MalformedTrackException if the artist or title are null, or if the id is negative
 	 */
-	public AudioTrack(int id, String title, String artist) {
+	public AudioTrack(int id, String title, String artist) throws MalformedTrackException {
 		//Set id and title using Multimedia super constructor
 		super(id, title);
 		//Set the artist field
@@ -40,11 +43,15 @@ public class AudioTrack extends Multimedia {
 	 * Constructs an AudioTrack by pulling data from an AudioTrackXML. Data used
 	 * includes id, title, artist and any track chunk data.
 	 * @param track the AudioTrackXML object to be used to create the AudioTrack
+	 * @throws MalformedTrackException if the AudioTrackXML contains invalid or corrupt data
 	 */
 	public AudioTrack(AudioTrackXML track) throws MalformedTrackException {
 		//Set the id, title and artist, initialize the TrackChunk array and chunkIndex value using other constructor.
 		this(track.getId(), track.getTitle(), track.getArtist());
+		
+		//Get the TrackChunkXML from the AudioTrackXML
 		TrackChunkXML chunk = track.getTrackChunks();
+		
 		if (chunk != null) { //To avoid NPEs
 			//TrackChunkXML contains a list of strings that correspond to individual track chunks
 			List<String> chunkStrings = chunk.getChunk();
@@ -76,7 +83,7 @@ public class AudioTrack extends Multimedia {
 	}
 	
 	/**
-	 * Gets the index of the most recently pulled chunk in the chunk collection
+	 * Gets the index of the next chunk to be accessed from the chunk collection
 	 * @return the index
 	 */
 	public int getChunkIndex() {
@@ -84,8 +91,8 @@ public class AudioTrack extends Multimedia {
 	}
 	
 	/**
-	 * Sets the chunk index, i.e. the index of the most recently accessed chunk in
-	 * the AudioTrack's chunk collection
+	 * Sets the chunk index, i.e. the index of the next chunk to be accessed from the
+	 * AudioTrack's chunk collection
 	 * @throws IllegalArgumentException if the index is out of bounds i.e. it is negative
 	 * or greater than the size of the chunk collection
 	 */
