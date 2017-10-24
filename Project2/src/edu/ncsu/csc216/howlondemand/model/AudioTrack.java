@@ -151,12 +151,11 @@ public class AudioTrack extends Multimedia {
 	}
 
 	/**
-	 * Gets a string representation of the AudioTrack
+	 * Gets a string representation of the AudioTrack of the form <ID> <Title> <Artist>
 	 * @return the string representation
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "" + getId() + " " + getTitle() + " " + getArtist();
 	}
 }
