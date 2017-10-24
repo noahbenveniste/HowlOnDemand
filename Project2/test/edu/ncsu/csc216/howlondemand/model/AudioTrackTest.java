@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AudioTrackTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#AudioTrack(int, java.lang.String, java.lang.String)}.
+	 * Test method for AudioTrack(int, String, String)
 	 */
 	@Test
 	public void testAudioTrackIntStringString() {
@@ -19,7 +19,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#AudioTrack(edu.ncsu.csc216.audioxml.xml.AudioTrackXML)}.
+	 * Test method for AudioTrack(AudioTrackXML)
 	 */
 	@Test
 	public void testAudioTrackAudioTrackXML() {
@@ -27,7 +27,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#getTrackChunkSize()}.
+	 * Test method for getTrackChunkSize()
 	 */
 	@Test
 	public void testGetTrackChunkSize() {
@@ -35,7 +35,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.Multimedia#getId()}.
+	 * Test method for getId()
 	 */
 	@Test
 	public void testGetId() {
@@ -43,7 +43,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.Multimedia#setId(int)}.
+	 * Test method for setId()
 	 */
 	@Test
 	public void testSetId() {
@@ -51,7 +51,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.Multimedia#getTitle()}.
+	 * Test method for getTitle()
 	 */
 	@Test
 	public void testGetTitle() {
@@ -59,7 +59,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.Multimedia#setTitle(java.lang.String)}.
+	 * Test method for setTitle()
 	 */
 	@Test
 	public void testSetTitle() {
@@ -67,7 +67,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#getArtist()}.
+	 * Test method for getArtist()
 	 */
 	@Test
 	public void testGetArtist() {
@@ -75,7 +75,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#setArtist(java.lang.String)}.
+	 * Test method for setArtist()
 	 */
 	@Test
 	public void testSetArtist() {
@@ -83,7 +83,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#getChunkIndex()}.
+	 * Test method for getChunkIndex()
 	 */
 	@Test
 	public void testGetChunkIndex() {
@@ -91,7 +91,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#setChunkIndex(int)}.
+	 * Test method for setChunkIndex()
 	 */
 	@Test
 	public void testSetChunkIndex() {
@@ -99,7 +99,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#addChunk(edu.ncsu.csc216.howlondemand.model.TrackChunk)}.
+	 * Test method for addChunk()
 	 */
 	@Test
 	public void testAddChunk() {
@@ -107,7 +107,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#hasNextChunk()}.
+	 * Test method for hasNextChunk()
 	 */
 	@Test
 	public void testHasNextChunk() {
@@ -115,7 +115,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#getNextChunk()}.
+	 * Test method for getNextChunk()
 	 */
 	@Test
 	public void testGetNextChunk() {
@@ -123,7 +123,7 @@ public class AudioTrackTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.howlondemand.model.AudioTrack#toString()}.
+	 * Test method for toString()
 	 */
 	@Test
 	public void testToString() {
