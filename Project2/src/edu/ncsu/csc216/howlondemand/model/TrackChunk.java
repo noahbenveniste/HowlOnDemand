@@ -38,7 +38,7 @@ public class TrackChunk {
 		if (validChunk(chunk)) {
 			this.chunk = chunk;
 		} else {
-			throw new MalformedTrackException();
+			throw new MalformedTrackException("Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long.");
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class TrackChunk {
 	 * @return true if the chunk is valid, false if the input is null or it does not conform to the standards described above.
 	 */
 	public boolean validChunk(String chunk) {
-		String regex = "([0-9]||[A-F]){8}"; //Indicates that the chunk must contain exactly 8 characters that can range from 0-9,A-F
+		String regex = "([0-9]|[A-F]){8}"; //Indicates that the chunk must contain exactly 8 characters that can range from 0-9,A-F
 		if (chunk == null) {
 			return false;
 		} else if (!chunk.matches(regex)) {
