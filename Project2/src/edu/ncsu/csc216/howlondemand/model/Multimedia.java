@@ -12,12 +12,14 @@ public abstract class Multimedia {
 	protected String title;
 	
 	/**
-	 * 
+	 * Superclass constructor for Multimedia child objects; sets the id
+	 * and title field for the created Multimedia child object
 	 * @param id
 	 * @param title
 	 */
 	public Multimedia(int id, String title) {
-		
+		setId(id);
+		setTitle(title);
 	}
 	
 	/**
