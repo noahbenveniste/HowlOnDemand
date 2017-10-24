@@ -3,7 +3,9 @@ package edu.ncsu.csc216.howlondemand.model;
 import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 
 /**
- * 
+ * A wrapper class for a piece of chunk data, represented as an 8 character-long
+ * hexadecimal string. This class ensures that the chunk string is valid, i.e.
+ * it is exactly 8 characters long and only contains valid hexadecimal digits i.e. 0-9,A-F
  * @author Noah Benveniste
  */
 public class TrackChunk {
@@ -72,7 +74,6 @@ public class TrackChunk {
 	 * @return a string representation of the TrackChunk
 	 */
 	public String toString() {
-		//TODO make sure that this format is correct
 		return this.chunk;
 	}
 }
