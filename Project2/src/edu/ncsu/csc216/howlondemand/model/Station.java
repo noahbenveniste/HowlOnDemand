@@ -25,25 +25,34 @@ public class Station {
 	private int index;
 	
 	/**
-	 * 
-	 * @param id
-	 * @param title
-	 * @param color
+	 * Constructs a Station from scratch with an empty track list; also initializes
+	 * shuffle and repeat to off.
+	 * @param id the Station's ID number
+	 * @param title the Station's title
+	 * @param color a number corresponding to the Station's color theme
 	 */
 	public Station(int id, String title, int color) {
-		
+		setId(id);
+		setTitle(title);
+		setColor(color);
+		playlist = new ArrayList<AudioTrack>();
+		reset();
 	}
 	
 	/**
-	 * 
-	 * @param s
+	 * Constructs a Station object using data from a StationXML object. Data used
+	 * include ID number, title, color, shuffle status, repeat status, and any AudioTrackXML
+	 * objects (creates AudioTrack objects from them)
+	 * @param s the StationXML object used to create a Station object
 	 */
 	public Station(StationXML s) {
-		
+		this(s.getId(), s.getTitle(), s.getColor());
+		shuffle = s.isShuffle();
+		repeat = s.isRepeat();
 	}
 
 	/**
-	 * 
+	 * Gets the Station's ID
 	 * @return the id
 	 */
 	public int getId() {
@@ -51,7 +60,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Sets the Station's ID
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
@@ -59,7 +68,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Gets the Station's title
 	 * @return the title
 	 */
 	public String getTitle() {
@@ -67,7 +76,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Sets the Station's title
 	 * @param title the title to set
 	 */
 	public void setTitle(String title) {
@@ -75,7 +84,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Gets the Station's current repeat toggle value
 	 * @return the repeat
 	 */
 	public boolean getRepeat() {
@@ -83,15 +92,14 @@ public class Station {
 	}
 
 	/**
-	 * 
-	 * @param repeat the repeat to set
+	 * Toggles repeat from on to off or off to on
 	 */
 	public void toggleRepeat() {
 		repeat = !repeat;
 	}
 
 	/**
-	 * 
+	 * Gets the Station's current shuffle toggle value
 	 * @return the shuffle
 	 */
 	public boolean getShuffle() {
@@ -99,23 +107,22 @@ public class Station {
 	}
 
 	/**
-	 * 
-	 * @param shuffle the shuffle to set
+	 * Toggles the shuffle from on to off or off to on
 	 */
 	public void toggleShuffle() {
 		shuffle = !shuffle;
 	}
 
 	/**
-	 * 
-	 * @return the playlist
+	 * Gets the Station's playlist of AudioTracks
+	 * @return the playlist as an ArrayList<AudioTrack>
 	 */
 	public ArrayList<AudioTrack> getPlaylist() {
 		return playlist;
 	}
 	
 	/**
-	 * 
+	 * Adds an AudioTrack to the playlist
 	 * @param t the AudioTrack to add to the playlist
 	 */
 	public void addAudioTrack(AudioTrack t) {
@@ -123,7 +130,7 @@ public class Station {
 	}
 	
 	/**
-	 * 
+	 * Checks if the Station has anymore AudioTracks in its playlist
 	 * @return
 	 */
 	public boolean hasNextTrack() {
@@ -131,15 +138,15 @@ public class Station {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the currently indexed AudioTrack
+	 * @return the current AudioTrack
 	 */
 	public AudioTrack getCurrentAudioTrack() {
-		return null;
+		return playlist.get(index);
 	}
 	
 	/**
-	 * 
+	 * Gets the number corresponding to the Station's color theme
 	 * @return the color
 	 */
 	public int getColor() {
@@ -147,7 +154,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Sets the number corresponding to the Station's color theme
 	 * @param color the color to set
 	 */
 	public void setColor(int color) {
@@ -155,7 +162,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Gets the index of the next AudioTrack to be indexed by the Station
 	 * @return the index
 	 */
 	public int getIndex() {
@@ -163,7 +170,7 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Sets the index of the next AudioTrack in the Station's playlist to be indexed
 	 * @param index the index to set
 	 */
 	public void setIndex(int index) {
@@ -171,17 +178,20 @@ public class Station {
 	}
 
 	/**
-	 * 
+	 * Resets the station back to its initial state i.e. the current track index is set
+	 * back to 0 and shuffle and repeat are both set back to false.
 	 */
 	public void reset() {
-		
+		index = 0;
+		shuffle = false;
+		repeat = false;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Returns a string representation of the Station in the form of <ID>,<Title>,<Color>
+	 * @return the string representation of the Station
 	 */
 	public String toString() {
-		return null;
+		return "" + getId() + "," + getTitle() + "," + getColor();
 	}
 }
