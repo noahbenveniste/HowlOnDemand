@@ -79,6 +79,9 @@ public class Station {
 	 * @throws IllegalArgumentException if the id is negative
 	 */
 	public void setId(int id) {
+		if (id < 0) {
+			throw new IllegalArgumentException("Invalid station ID, cannot be negative");
+		}
 		this.id = id;
 	}
 

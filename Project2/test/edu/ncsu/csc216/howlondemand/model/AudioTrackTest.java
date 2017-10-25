@@ -58,6 +58,7 @@ public class AudioTrackTest {
 	private static final String NO_MORE_CHUNKS = "No chunks left in track's chunk collection";
 	/** Track string format */
 	private static final String TRACK_STRING = "1,The Gods Must Be Crazy!,Periphery";
+	
 	/**
 	 * Initializes each test with a AudioTrackXML object to use
 	 */
