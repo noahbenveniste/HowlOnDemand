@@ -151,7 +151,7 @@ public class AudioTrack extends Multimedia {
 	}
 
 	/**
-	 * Gets a string representation of the AudioTrack of the form <ID> <Title> <Artist>
+	 * Gets a string representation of the AudioTrack of the form <ID>,<Title>,<Artist>
 	 * @return the string representation
 	 */
 	@Override
