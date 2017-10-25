@@ -1,7 +1,11 @@
 package edu.ncsu.csc216.howlondemand.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import edu.ncsu.csc216.audioxml.xml.AudioTrackList;
+import edu.ncsu.csc216.audioxml.xml.AudioTrackXML;
+import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 import edu.ncsu.csc216.audioxml.xml.StationXML;
 
 /**
@@ -44,11 +48,21 @@ public class Station {
 	 * include ID number, title, color, shuffle status, repeat status, and any AudioTrackXML
 	 * objects (creates AudioTrack objects from them)
 	 * @param s the StationXML object used to create a Station object
+	 * @throws MalformedTrackException if the StationXML contains corrupt or improperly formatted AudioTrack data
 	 */
-	public Station(StationXML s) {
+	public Station(StationXML s) throws MalformedTrackException {
 		this(s.getId(), s.getTitle(), s.getColor());
 		shuffle = s.isShuffle();
 		repeat = s.isRepeat();
+		
+		//Read in the AudioTrackXML objects, use them to create AudioTrack objects, then add them to playlist
+		List<AudioTrackXML> l = s.getAudioTracks().getAudioTrackXML();
+		
+		if (l != null) {
+			for (int i = 0; i < l.size(); i++) {
+				playlist.add(new AudioTrack(l.get(i)));
+			}
+		}
 	}
 
 	/**
@@ -62,6 +76,7 @@ public class Station {
 	/**
 	 * Sets the Station's ID
 	 * @param id the id to set
+	 * @throws IllegalArgumentException if the id is negative
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -78,9 +93,14 @@ public class Station {
 	/**
 	 * Sets the Station's title
 	 * @param title the title to set
+	 * @throws IllegalArgumentException if the title string is null
 	 */
 	public void setTitle(String title) {
-		this.title = title;
+		if (title == null) {
+			throw new IllegalArgumentException("Station title cannot be null");
+		} else {
+			this.title = title;
+		}
 	}
 
 	/**
@@ -126,15 +146,15 @@ public class Station {
 	 * @param t the AudioTrack to add to the playlist
 	 */
 	public void addAudioTrack(AudioTrack t) {
-		
+		playlist.add(t);
 	}
 	
 	/**
 	 * Checks if the Station has anymore AudioTracks in its playlist
-	 * @return
+	 * @return true if there are more tracks in the playlist to index, false otherwise
 	 */
 	public boolean hasNextTrack() {
-		return false;
+		return (index < playlist.size());
 	}
 	
 	/**
@@ -177,9 +197,14 @@ public class Station {
 	/**
 	 * Sets the index of the next AudioTrack in the Station's playlist to be indexed
 	 * @param index the index to set
+	 * @throws IllegalArgumentException if the index is less than zero
 	 */
 	public void setIndex(int index) {
-		this.index = index;
+		if (index < 0) {
+			throw new IllegalArgumentException("Invalid index, cannot be negative");
+		} else {
+			this.index = index;
+		}
 	}
 
 	/**

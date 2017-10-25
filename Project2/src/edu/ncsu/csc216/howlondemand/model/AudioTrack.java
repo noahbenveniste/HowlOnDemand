@@ -121,7 +121,7 @@ public class AudioTrack extends Multimedia {
 	@Override
 	public TrackChunk getNextChunk() {
 		//Check that the current chunkIndex is less than the chunk collection's size. If not, throw an IAE
-		if (chunkIndex >= chunks.size()) {
+		if (!hasNextChunk()) {
 			throw new IllegalArgumentException("No chunks left in track's chunk collection");
 		} else {
 			//If the chunkIndex is less than the chunk collection's size, return the chunk at that index, increment the chunkIndex
