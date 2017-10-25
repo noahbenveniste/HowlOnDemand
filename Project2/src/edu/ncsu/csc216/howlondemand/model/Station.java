@@ -156,9 +156,14 @@ public class Station {
 	/**
 	 * Sets the number corresponding to the Station's color theme
 	 * @param color the color to set
+	 * @throws IllegalArgumentException if the input is not in {0, 1, 2, 3, 4, 5}
 	 */
 	public void setColor(int color) {
-		this.color = color;
+		if (color < 0 || color > 5) {
+			throw new IllegalArgumentException("Invalid color value, must be between 0 and 5 inclusive");
+		} else {
+			this.color = color;
+		}
 	}
 
 	/**
