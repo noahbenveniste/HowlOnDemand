@@ -12,7 +12,7 @@ import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
  */
 public class TrackChunkTest {
 	/** Expected error message for MalformedTrackException thrown by TrackChunk */
-	private static final String ERROR_MSG = "Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long.";
+	private static final String ERROR_MSG = "Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long";
 	/** Default chunk string */
 	private static final String DEFAULT = "00000000";
 	/**

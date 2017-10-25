@@ -43,7 +43,7 @@ public class TrackChunk {
 		if (validChunk(chunk)) {
 			this.chunk = chunk;
 		} else {
-			throw new MalformedTrackException("Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long.");
+			throw new MalformedTrackException("Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long");
 		}
 	}
 	
