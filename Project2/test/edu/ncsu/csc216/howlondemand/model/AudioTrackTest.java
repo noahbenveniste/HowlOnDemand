@@ -85,12 +85,7 @@ public class AudioTrackTest {
 	 */
 	@Test
 	public void testAudioTrackIntStringString() {
-		//Try creating an AudioTrack from scratch; should have an empty track chunk collection
-		try {
-			t = new AudioTrack(TRACK_ID, TRACK_TITLE, TRACK_ARTIST);
-		} catch (MalformedTrackException e) {
-			fail(e.getMessage());
-		}
+		t = new AudioTrack(TRACK_ID, TRACK_TITLE, TRACK_ARTIST);
 		assertEquals(0, t.getTrackChunkSize());
 	}
 
@@ -104,7 +99,7 @@ public class AudioTrackTest {
 		try {
 			t = new AudioTrack(tXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			assertNull(t);
 			assertEquals(ID_ERROR, e.getMessage());
 		}
@@ -116,7 +111,7 @@ public class AudioTrackTest {
 		try {
 			t = new AudioTrack(tXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			assertNull(t);
 			assertEquals(TITLE_ERROR, e.getMessage());
 		}
@@ -131,8 +126,6 @@ public class AudioTrackTest {
 		} catch (IllegalArgumentException e) {
 			assertNull(t);
 			assertEquals(ARTIST_ERROR, e.getMessage());
-		} catch (MalformedTrackException e) {
-			fail("Unexpected MalformedTrackException");
 		}
 		//Set the artist to a valid one
 		tXML.setArtist(TRACK_ARTIST);
@@ -142,9 +135,9 @@ public class AudioTrackTest {
 		try {
 			t = new AudioTrack(tXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			assertNull(t);
-			assertEquals(CHUNK_ERROR, e.getMessage());
+			assertEquals("Bad chunk data", e.getMessage());
 		}
 		//Remove the invalid chunk
 		tXML.getTrackChunks().getChunk().remove(cXML.getChunk().size() - 1);
@@ -152,7 +145,7 @@ public class AudioTrackTest {
 		//Valid construction
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail();
 		}
 		assertEquals(TRACK_ID, t.getId());
@@ -168,7 +161,7 @@ public class AudioTrackTest {
 	public void testGetTrackChunkSize() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(5, t.getTrackChunkSize());
@@ -189,7 +182,7 @@ public class AudioTrackTest {
 	public void testGetId() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_ID, t.getId());
@@ -202,7 +195,7 @@ public class AudioTrackTest {
 	public void testSetId() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		
@@ -210,7 +203,7 @@ public class AudioTrackTest {
 		try {
 			t.setId(-1);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			assertEquals(ID_ERROR, e.getMessage());
 			assertEquals(TRACK_ID, t.getId());
 		}
@@ -218,7 +211,7 @@ public class AudioTrackTest {
 		//Set a valid ID
 		try {
 			t.setId(2);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(2, t.getId());
@@ -231,7 +224,7 @@ public class AudioTrackTest {
 	public void testGetTitle() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_TITLE, t.getTitle());
@@ -244,7 +237,7 @@ public class AudioTrackTest {
 	public void testSetTitle() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_TITLE, t.getTitle());
@@ -253,7 +246,7 @@ public class AudioTrackTest {
 		try {
 			t.setTitle(INVALID_TITLE);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			assertEquals(TRACK_TITLE, t.getTitle());
 			assertEquals(TITLE_ERROR, e.getMessage());
 		}
@@ -261,7 +254,7 @@ public class AudioTrackTest {
 		//Set a valid title, check that it updates
 		try {
 			t.setTitle("New Title");
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals("New Title", t.getTitle());
@@ -274,7 +267,7 @@ public class AudioTrackTest {
 	public void testGetArtist() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_ARTIST, t.getArtist());
@@ -287,7 +280,7 @@ public class AudioTrackTest {
 	public void testSetArtist() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_ARTIST, t.getArtist());
@@ -317,7 +310,7 @@ public class AudioTrackTest {
 	public void testGetChunkIndex() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(0, t.getChunkIndex());
@@ -330,7 +323,7 @@ public class AudioTrackTest {
 	public void testSetChunkIndex() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		
@@ -392,7 +385,7 @@ public class AudioTrackTest {
 	public void testAddChunk() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(0, t.getChunkIndex());
@@ -450,7 +443,7 @@ public class AudioTrackTest {
 	public void testHasNextChunk() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(0, t.getChunkIndex());
@@ -478,7 +471,7 @@ public class AudioTrackTest {
 	public void testGetNextChunk() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(0, t.getChunkIndex());
@@ -507,7 +500,7 @@ public class AudioTrackTest {
 	public void testToString() {
 		try {
 			t = new AudioTrack(tXML);
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(TRACK_STRING, t.toString());

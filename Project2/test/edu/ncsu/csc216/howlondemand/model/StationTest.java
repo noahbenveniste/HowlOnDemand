@@ -219,7 +219,7 @@ public class StationTest {
 		try {
 			s = new Station(sXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException | MalformedTrackException e) {
 			assertNull(s);
 			assertEquals(ID_ERROR, e.getMessage());
 		}
@@ -230,7 +230,7 @@ public class StationTest {
 		try {
 			s = new Station(sXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException | MalformedTrackException e) {
 			assertNull(s);
 			assertEquals(TITLE_ERROR, e.getMessage());
 		}
@@ -254,9 +254,9 @@ public class StationTest {
 		try {
 			s = new Station(sXML);
 			fail();
-		} catch (MalformedTrackException e) {
+		} catch (IllegalArgumentException | MalformedTrackException e) {
 			assertNull(s);
-			assertEquals(CHUNK_ERROR, e.getMessage());
+			assertEquals("Bad chunk data", e.getMessage());
 		}
 		sXML.getAudioTracks().getAudioTrackXML().get(0).getTrackChunks().getChunk().remove(INVALID_CHUNK);
 		
@@ -388,17 +388,9 @@ public class StationTest {
 	public void testAddAudioTrack() {
 		s = new Station(STATION_ID, STATION_TITLE, STATION_COLOR);
 		
-		try {
-			s.addAudioTrack(new AudioTrack(track2));
-		} catch (MalformedTrackException e) {
-			fail("MalformedTrackException was thrown when it shouldn't have");
-		}
+		s.addAudioTrack(new AudioTrack(track2));
 		
-		try {
-			s.addAudioTrack(new AudioTrack(track1));
-		} catch (MalformedTrackException e) {
-			fail("MalformedTrackException was thrown when it shouldn't have");
-		}
+		s.addAudioTrack(new AudioTrack(track1));
 		
 		assertEquals(TRACK_TITLE_2, s.getPlaylist().get(0).getTitle());
 		
