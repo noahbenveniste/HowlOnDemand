@@ -106,13 +106,22 @@ public class HowlOnDemandSystem {
 	/**
 	 * Creates a collection of Stations from an XML file.
 	 * @param fileName the name of the file
-	 * @throws StationIOException if the file contains improperly formatted or corrupt data
+	 * @throws StationIOException if there is an issue reading in the XML file
 	 */
 	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
 		StationsReader stationsReader = new StationsReader(fileName); //Throws StationIOException if there is an issue processing the XML file
 		
 		//Get a list of StationXML objects from the Stations if the reader read in the objects successfully from the file
 		List<StationXML> temp = stationsReader.getStations();
+		
+		//Attempt to process the StationXML objects and add them to the stations collection
+		for (int i = 0; i < temp.size(); i++) {
+			try {
+				stations.add(new Station(temp.get(i)));
+			} catch (MalformedTrackException e) {
+				throw new IllegalArgumentException(e.getMessage());
+			}
+		}
 	}
 	
 	/**
