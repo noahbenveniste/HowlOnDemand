@@ -21,7 +21,11 @@ public class TrackChunkTest {
 	@Test
 	public void testTrackChunk() {
 		TrackChunk chunk = null;
-		chunk = new TrackChunk();
+		try {
+			chunk = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		assertEquals(DEFAULT, chunk.getChunk());
 	}
 
@@ -32,7 +36,11 @@ public class TrackChunkTest {
 	public void testValidChunk() {
 		String invalid = "";
 		TrackChunk c = null;
-		c = new TrackChunk();
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e) {
+			fail();
+		}
 		
 		//Test an invalid track chunk that is null
 		invalid = null;
@@ -193,8 +201,16 @@ public class TrackChunkTest {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
 		TrackChunk c = null;
-		c = new TrackChunk();
-		c = new TrackChunk();
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e1) {
+			fail();
+		}
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e1) {
+			fail();
+		}
 		
 		//Try setting an invalid chunk string
 		try {
@@ -221,7 +237,11 @@ public class TrackChunkTest {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
 		TrackChunk c = null;
-		c = new TrackChunk();
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e1) {
+			fail();
+		}
 		
 		try {
 			c.setChunk(invalid);
@@ -247,7 +267,11 @@ public class TrackChunkTest {
 		String invalid = "XXXXXXXX";
 		String valid = "1234ABCD";
 		TrackChunk c = null;
-		c = new TrackChunk();
+		try {
+			c = new TrackChunk();
+		} catch (MalformedTrackException e1) {
+			fail();
+		}
 		
 		try {
 			c.setChunk(invalid);

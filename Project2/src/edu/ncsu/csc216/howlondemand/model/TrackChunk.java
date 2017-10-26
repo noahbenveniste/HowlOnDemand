@@ -19,7 +19,7 @@ public class TrackChunk {
 	 * by default to avoid NullPointerExceptions. The chunk field must be set with a call to
 	 * setChunk() if this constructor is used.
 	 */
-	public TrackChunk() {
+	public TrackChunk() throws MalformedTrackException {
 		this.chunk = DEFAULT;
 	}
 	
