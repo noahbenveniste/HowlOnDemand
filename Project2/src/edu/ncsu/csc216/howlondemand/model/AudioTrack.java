@@ -26,9 +26,9 @@ public class AudioTrack extends Multimedia {
 	 * @param id the track's numerical id
 	 * @param title the title of the track
 	 * @param artist the track's artist
-	 * @throws MalformedTrackException if the artist or title are null, or if the id is negative
+	 * @throws IllegalArgumentException if the artist or title are null, or if the id is negative
 	 */
-	public AudioTrack(int id, String title, String artist) throws MalformedTrackException {
+	public AudioTrack(int id, String title, String artist) {
 		//Set id and title using Multimedia super constructor
 		super(id, title);
 		//Set the artist field
@@ -43,9 +43,9 @@ public class AudioTrack extends Multimedia {
 	 * Constructs an AudioTrack by pulling data from an AudioTrackXML. Data used
 	 * includes id, title, artist and any track chunk data.
 	 * @param track the AudioTrackXML object to be used to create the AudioTrack
-	 * @throws MalformedTrackException if the AudioTrackXML contains invalid or corrupt data
+	 * @throws IllegalArgumentException if the AudioTrackXML contains invalid or corrupt data
 	 */
-	public AudioTrack(AudioTrackXML track) throws MalformedTrackException {
+	public AudioTrack(AudioTrackXML track) {
 		//Set the id, title and artist, initialize the TrackChunk array and chunkIndex value using other constructor.
 		this(track.getId(), track.getTitle(), track.getArtist());
 		
@@ -57,7 +57,11 @@ public class AudioTrack extends Multimedia {
 			List<String> chunkStrings = chunk.getChunk();
 			for (int i = 0; i < chunkStrings.size(); i++) {
 				//Create a new TrackChunk using the string, add it to the chunks ArrayList
-				addChunk(new TrackChunk(chunkStrings.get(i))); 
+				try {
+					addChunk(new TrackChunk(chunkStrings.get(i)));
+				} catch (MalformedTrackException e) {
+					throw new IllegalArgumentException("Bad chunk data");
+				} 
 			}
 		}
 	}

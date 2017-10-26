@@ -19,9 +19,9 @@ public abstract class Multimedia {
 	 * and title field for the created Multimedia child object
 	 * @param id the numerical ID
 	 * @param title the title
-	 * @throws MalformedTrackException if the ID is negative or the title is null
+	 * @throws IllegalArgumentException if the ID is negative or the title is null
 	 */
-	public Multimedia(int id, String title) throws MalformedTrackException {
+	public Multimedia(int id, String title) {
 		setId(id);
 		setTitle(title);
 	}
@@ -39,9 +39,9 @@ public abstract class Multimedia {
 	 * @param id the ID number to set
 	 * @throws MalformedTrackException if the ID is negative
 	 */
-	public void setId(int id) throws MalformedTrackException {
+	public void setId(int id) throws IllegalArgumentException {
 		if (id < 0) {
-			throw new MalformedTrackException("Track ID is invalid, cannot be negative");
+			throw new IllegalArgumentException("Track ID is invalid, cannot be negative");
 		} else {
 			this.id = id;
 		}
@@ -60,9 +60,9 @@ public abstract class Multimedia {
 	 * @param title the title to set
 	 * @throws MalformedTrackException if the title is null
 	 */
-	public void setTitle(String title) throws MalformedTrackException {
+	public void setTitle(String title) throws IllegalArgumentException {
 		if (title == null) {
-			throw new MalformedTrackException("Track title cannot be null");
+			throw new IllegalArgumentException("Track title cannot be null");
 		} else {
 			this.title = title;
 		}
