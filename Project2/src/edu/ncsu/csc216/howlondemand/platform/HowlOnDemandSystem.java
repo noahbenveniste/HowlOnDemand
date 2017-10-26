@@ -3,6 +3,8 @@ package edu.ncsu.csc216.howlondemand.platform;
 import java.util.ArrayList;
 import java.util.Queue;
 
+import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
+import edu.ncsu.csc216.audioxml.xml.StationIOException;
 import edu.ncsu.csc216.howlondemand.model.AudioTrack;
 import edu.ncsu.csc216.howlondemand.model.Station;
 import edu.ncsu.csc216.howlondemand.model.TrackChunk;
@@ -13,9 +15,9 @@ import edu.ncsu.csc216.howlondemand.model.TrackChunk;
  */
 public class HowlOnDemandSystem {
 	/** */
-	public static final int BUFFER_CAPACITY = 0;
+	public static final int BUFFER_CAPACITY = 100;
 	/** */
-	public static final int STATION_CAPACITY = 0;
+	public static final int STATION_CAPACITY = 9;
 	/** */
 	public static final String SELECTION_NAME = "";
 	/** */
@@ -76,7 +78,7 @@ public class HowlOnDemandSystem {
 	 * 
 	 * @param fileName
 	 */
-	public void loadStationsFromFile(String fileName) {
+	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
 		
 	}
 	
