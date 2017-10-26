@@ -144,9 +144,10 @@ public class AudioTrack extends Multimedia {
 	/**
 	 * Adds a chunk to the AudioTrack's chunk collection
 	 * @param c the chunk to add
+	 * @throws MalformedTrackException
 	 */
 	@Override
-	public void addChunk(TrackChunk c) {
+	public void addChunk(TrackChunk c) throws MalformedTrackException {
 		chunks.add(c);
 	}
 

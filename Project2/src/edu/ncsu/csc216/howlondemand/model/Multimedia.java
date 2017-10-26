@@ -86,8 +86,9 @@ public abstract class Multimedia {
 	/**
 	 * Adds a chunk to the Multimedia object's chunk collection
 	 * @param c the chunk to add
+	 * @throws MalformedTrackException
 	 */
-	public abstract void addChunk(TrackChunk c);
+	public abstract void addChunk(TrackChunk c) throws MalformedTrackException ;
 	
 	/**
 	 * Gets a string representation of the Multimedia object
