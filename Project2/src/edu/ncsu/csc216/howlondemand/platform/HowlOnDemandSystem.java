@@ -1,10 +1,14 @@
 package edu.ncsu.csc216.howlondemand.platform;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 import edu.ncsu.csc216.audioxml.xml.StationIOException;
+import edu.ncsu.csc216.audioxml.xml.StationXML;
+import edu.ncsu.csc216.audioxml.xml.StationsReader;
 import edu.ncsu.csc216.howlondemand.model.AudioTrack;
 import edu.ncsu.csc216.howlondemand.model.Station;
 import edu.ncsu.csc216.howlondemand.model.TrackChunk;
@@ -51,35 +55,64 @@ public class HowlOnDemandSystem {
 	private HowlOnDemandSystemState state;
 	
 	/** */
-	private HowlOnDemandSystemState singleton;
+	private static HowlOnDemandSystem singleton;
 	/** */
 	private Station currentStation;
 	/** */
 	private ArrayList<Station> stations;
 	/** */
-	private Queue chunks;
+	private Queue<TrackChunk> chunks;
 	
 	/**
-	 * 
-	 * @return
+	 * Used to access the singleton instance of the HowlOnDemandSystem object.
+	 * If the method hasn't been called before, a new instance of the object is
+	 * created. Otherwise, a reference to the already created instance of the
+	 * HowlOnDemandSystem is returned.
+	 * @return the singleton instance of the HowlOnDemandSystem
 	 */
 	public static HowlOnDemandSystem getInstance() {
-		return null;
+		if (singleton == null) {
+			//Only call the constructor to create a new object if the static instance field is null
+			singleton = new HowlOnDemandSystem();
+		}
+		return singleton;
 	}
 	
 	/**
-	 * 
+	 * Constructs a HowlOnDemandSystem object. Initializes all state objects,
+	 * initializes the current state to the selection state, and finally initializes
+	 * the Station and TrackChunk collections.
 	 */
 	private HowlOnDemandSystem() {
+		//Initialize all state fields for the FSM
+		selectionState = new SelectionState();
+		playWithBufferingState = new PlayWithBufferingState();
+		playWithoutBufferingState = new PlayWithoutBufferingState();
+		stopWithBufferingState = new StopWithBufferingState();
+		stopWithoutBufferingState = new StopWithoutBufferingState();
+		quitState = new QuitState();
+		finishedState = new FinishedState();
 		
+		//Initialize the current state to the selection state
+		state = selectionState;
+		
+		//Initialize the stations ArrayList
+		stations = new ArrayList<Station>();
+		
+		//Initialize the track chunk queue
+		chunks = new LinkedList<TrackChunk>();
 	}
 	
 	/**
-	 * 
-	 * @param fileName
+	 * Creates a collection of Stations from an XML file.
+	 * @param fileName the name of the file
+	 * @throws StationIOException if the file contains improperly formatted or corrupt data
 	 */
 	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
+		StationsReader stationsReader = new StationsReader(fileName); //Throws StationIOException if there is an issue processing the XML file
 		
+		//Get a list of StationXML objects from the Stations if the reader read in the objects successfully from the file
+		List<StationXML> temp = stationsReader.getStations();
 	}
 	
 	/**
@@ -87,7 +120,7 @@ public class HowlOnDemandSystem {
 	 * @return
 	 */
 	public ArrayList<Station> getStations() {
-		return null;
+		return stations;
 	}
 	
 	/**
@@ -95,7 +128,7 @@ public class HowlOnDemandSystem {
 	 * @param s
 	 */
 	public void loadStation(Station s) {
-		
+		currentStation = s;
 	}
 	
 	/**
@@ -103,7 +136,7 @@ public class HowlOnDemandSystem {
 	 * @return 
 	 */
 	public Station getCurrentStation() {
-		return this.currentStation;
+		return currentStation;
 	}
 	
 	/**
