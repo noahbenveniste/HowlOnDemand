@@ -152,7 +152,11 @@ public class AudioTrack extends Multimedia {
 	 */
 	@Override
 	public void addChunk(TrackChunk c) throws MalformedTrackException {
-		chunks.add(c);
+		if (c == null) {
+			throw new MalformedTrackException("Null chunk!");
+		} else {
+			chunks.add(c);
+		}
 	}
 
 	/**
