@@ -2,7 +2,6 @@ package edu.ncsu.csc216.howlondemand.platform;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc216.howlondemand.platform.enums.CommandValue;
