@@ -6,7 +6,7 @@ import java.awt.Color;
 
 import org.junit.Test;
 
-import edu.ncsu.csc216.howlondemand.ui.util.Properties;;
+import edu.ncsu.csc216.howlondemand.ui.util.Properties;
 
 /**
  * Unit tests for Properties
