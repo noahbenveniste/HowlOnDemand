@@ -66,7 +66,7 @@ public class TrackChunk {
 		if (chunk == null) {
 			return false;
 		} else {
-			return (chunk.matches(regex));
+			return chunk.matches(regex);
 		}
 	}
 	
