@@ -1840,6 +1840,7 @@
       </AudioTrackXML>
     </AudioTracks>
   </StationXML>
+  
   <StationXML>
     <id>3</id>
     <title>Studying</title>
@@ -2403,8 +2404,7 @@
         </TrackChunks>
       </AudioTrackXML>
     </AudioTracks>
-  </StationXML>
-  <StationXML>
+  </StationXML><StationXML>
     <id>4</id>
     <title>Friday Night</title>
     <repeat>false</repeat>
