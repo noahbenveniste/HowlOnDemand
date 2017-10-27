@@ -16,53 +16,55 @@ import edu.ncsu.csc216.howlondemand.model.TrackChunk;
 import edu.ncsu.csc216.howlondemand.platform.enums.CommandValue;
 
 /**
- * 
+ * Finite state machine that manages track selection from a selected station and
+ * the streaming of those tracks. HowlOnDemandSystem follows the singleton design
+ * pattern, meaning that only one instance can exist at a given time.
  * @author Noah Benveniste
  */
 public class HowlOnDemandSystem {
-	/** */
+	/** The capacity of the system buffer */
 	public static final int BUFFER_CAPACITY = 100;
-	/** */
+	/** The number of stations the system can hold (based on the GUI display) */
 	public static final int STATION_CAPACITY = 9;
-	/** */
+	/** The name of the SelectionState */
 	public static final String SELECTION_NAME = "Selection";
-	/** */
+	/** The name of the PlayWithBufferingState */
 	public static final String PLAYWITHBUFFERING_NAME = "Playing with Buffering";
-	/** */
+	/** The name of the PlayWithoutBufferingState */
 	public static final String PLAYWITHOUTBUFFERING_NAME = "Playing without Buffering";
-	/** */
+	/** The name of the StopWithBufferingState */
 	public static final String STOPWITHBUFFERING_NAME = "Stopped with Buffering";
-	/** */
+	/** The name of the StopWithoutBufferingState */
 	public static final String STOPWITHOUTBUFFERING_NAME = "Stopped without Buffering";
-	/** */
+	/** The name of the QuitState */
 	public static final String QUIT_NAME = "Quit";
-	/** */
+	/** The name of the FinishedState */
 	public static final String FINISHED_NAME = "Finished";
 	
-	/** */
+	/** SelectionState object for the FSM */
 	private HowlOnDemandSystemState selectionState;
-	/** */
+	/** PlayWithBufferingState object for the FSM */
 	private HowlOnDemandSystemState playWithBufferingState;
-	/** */
+	/** PlayWithoutBufferingState object for the FSM */
 	private HowlOnDemandSystemState playWithoutBufferingState;
-	/** */
+	/** StopWithBufferingState object for the FSM */
 	private HowlOnDemandSystemState stopWithBufferingState;
-	/** */
+	/** StopWithoutBUfferingState object for the FSM */
 	private HowlOnDemandSystemState stopWithoutBufferingState;
-	/** */
+	/** QuitState object for the FSM */
 	private HowlOnDemandSystemState quitState;
-	/** */
+	/** FinishedState object for the FSM */
 	private HowlOnDemandSystemState finishedState;
-	/** */
+	/** Current state of the FSM */
 	private HowlOnDemandSystemState state;
 	
-	/** */
+	/** The instance of the HowlOnDemandSystem that the GUI will work with */
 	private static HowlOnDemandSystem singleton;
-	/** */
+	/** The current station that is being streamed */
 	private Station currentStation;
-	/** */
+	/** A collection of stations available to stream */
 	private ArrayList<Station> stations;
-	/** */
+	/** The chunk buffer, used for streaming AudioTracks */
 	private Queue<TrackChunk> chunks;
 	
 	/**
@@ -201,16 +203,17 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the number of chunks currently in the buffer
+	 * @return the number of chunks in the buffer
 	 */
 	public int getChunkSize() {
 		return chunks.size();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Consumes a chunk by removing the chunk at the front of the buffer
+	 * @return the consumed track chunk
+	 * @throws IllegalArgumentException if the buffer is empty
 	 */
 	public TrackChunk consumeTrackChunk() {
 		if (hasNextTrackChunk()) {
@@ -221,16 +224,16 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Checks if the buffer has more chunks
+	 * @return true if it does, false if its empty
 	 */
 	public boolean hasNextTrackChunk() {
 		return (chunks.size() > 0 );
 	}
 	
 	/**
-	 * 
-	 * @param c
+	 * Attempts to add a track chunk to the buffer
+	 * @param c the chunk to add
 	 * @throws IllegalArgumentException if there is no room left in the buffer
 	 */
 	public void addTrackChunkToBuffer(TrackChunk c) {
@@ -244,8 +247,8 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Checks if the buffer has room for more chunks
+	 * @return true if it does, false if it's full
 	 */
 	public boolean bufferHasRoom() {
 		return (chunks.size() < BUFFER_CAPACITY);
@@ -269,12 +272,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * Starting state for the system where the user is selecting
 	 * @author Noah Benveniste
 	 */
 	private class SelectionState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -290,7 +294,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -299,12 +304,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system is playing while the buffer is filling with track chunks
 	 * @author Noah Benveniste
 	 */
 	private class PlayWithBufferingState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -409,7 +415,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -418,12 +425,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system is playing but the buffer is not filling with track chunks
 	 * @author Noah Benveniste
 	 */
 	private class PlayWithoutBufferingState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -514,7 +522,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -523,12 +532,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system has stopped streaming chunks but the buffer is filling with chunks
 	 * @author Noah Benveniste
 	 */
 	private class StopWithBufferingState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -612,7 +622,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -621,12 +632,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system is not streaming and the buffer is not filling with chunks
 	 * @author Noah Benveniste
 	 */
 	private class StopWithoutBufferingState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -709,7 +721,8 @@ public class HowlOnDemandSystem {
 		}
 		
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -718,12 +731,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system has quit, the instance is reset
 	 * @author Noah Benveniste
 	 */
 	private class QuitState implements HowlOnDemandSystemState {
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -737,7 +751,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
@@ -746,12 +761,13 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * 
+	 * The system has finished streaming a track
 	 * @author Noah Benveniste
 	 */
 	private class FinishedState implements HowlOnDemandSystemState {		
 		/**
-		 * 
+		 * Updates the system's current state based on the input command and the current state of the system
+		 * @throws UnsupportedOperationException if the command is invalid
 		 */
 		@Override
 		public void updateState(Command c) {
@@ -804,7 +820,8 @@ public class HowlOnDemandSystem {
 		}
 
 		/**
-		 * 
+		 * Gets the name of this state
+		 * @return the name of the state as a string
 		 */
 		@Override
 		public String getStateName() {
