@@ -739,7 +739,52 @@ public class HowlOnDemandSystem {
 		 */
 		@Override
 		public void updateState(Command c) {
-			// TODO Auto-generated method stub
+			if (c.getCommand() == CommandValue.FINISH_TRACK) {
+				if (currentStation.getShuffle()) {
+					//Randomly generate a new index using a while loop to ensure that its different
+					int newTrackIdx = currentStation.getIndex();
+					Random r = new Random();
+					//Loop repeats until a number is generate that is different than the current track index
+					while (newTrackIdx == currentStation.getIndex()) {
+						//Generates a number between [0, currentStation.getPlaylist().size() )
+						newTrackIdx = r.nextInt(currentStation.getPlaylist().size());
+					}
+					//Change the new current track for the station to the one at the randomly generated index
+					currentStation.setIndex(newTrackIdx);
+					//Set the station's new current track's chunk index to 0
+					currentStation.getCurrentAudioTrack().setChunkIndex(0);
+					//Clear the buffer
+					chunks = new LinkedList<TrackChunk>();
+				} else if (currentStation.hasNextTrack()) {
+					//Increment the current index
+					int current = currentStation.getIndex();
+					currentStation.setIndex(current++);
+					//Set the station's new current track's chunk index to 0
+					currentStation.getCurrentAudioTrack().setChunkIndex(0);
+					//Clear the buffer
+					chunks = new LinkedList<TrackChunk>();
+				} else {
+					//Current station has no more tracks, check if the playlist is set to repeat
+					if (currentStation.getRepeat()) {
+						currentStation.setIndex(0);
+						//Set the station's new current track's chunk index to 0
+						currentStation.getCurrentAudioTrack().setChunkIndex(0);
+						//Clear the buffer
+						chunks = new LinkedList<TrackChunk>();
+					}
+				}
+				state = playWithBufferingState;
+			} else if (c.getCommand() == CommandValue.FINISH_STATION) {
+				state = finishedState;
+				
+			} else if (c.getCommand() == CommandValue.RETURN) {
+				reset();
+				state = quitState;
+				
+			} else {
+				//Any other command is invalid
+				throw new UnsupportedOperationException(c.getCommand().toString() + " is not a valid command for " + this.getStateName());
+			}
 		}
 
 		/**
@@ -747,8 +792,7 @@ public class HowlOnDemandSystem {
 		 */
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return FINISHED_NAME;
 		}
 	}
 }
