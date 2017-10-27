@@ -17,7 +17,11 @@ public class Command {
 	 * @param c the CommandValue enum object to store in the wrapper
 	 */
 	public Command(CommandValue c) {
-		this.c = c;
+		if (c == null) {
+			throw new IllegalArgumentException();
+		} else {
+			this.c = c;
+		}
 	}
 	
 	/**
