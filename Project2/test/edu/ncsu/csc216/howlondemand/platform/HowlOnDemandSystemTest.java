@@ -33,7 +33,7 @@ public class HowlOnDemandSystemTest {
 	/** The name of the FinishedState */
 	public static final String FINISHED_NAME = "Finished";
 	
-	/** */
+	/** Reference to the HowlOnDemandSystem to be used throughout testing */
 	private HowlOnDemandSystem h;
 	
 	/**
