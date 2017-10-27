@@ -109,8 +109,13 @@ public class HowlOnDemandSystem {
 	 * Creates a collection of Stations from an XML file.
 	 * @param fileName the name of the file
 	 * @throws StationIOException if there is an issue reading in the XML file
+	 * @throw IllegalArgumentException if any of the stations contain bad track data
+	 * @throw MalformedTrackException 
 	 */
 	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
+		//Reset stations field
+		stations = new ArrayList<Station>();
+		
 		StationsReader stationsReader = new StationsReader(fileName); //Throws StationIOException if there is an issue processing the XML file
 		
 		//Get a list of StationXML objects from the Stations if the reader read in the objects successfully from the file
@@ -172,14 +177,18 @@ public class HowlOnDemandSystem {
 	}
 	
 	/**
-	 * Empties system buffer, sets current state back to selection, nulls the current station
+	 * Empties system buffer and station list, nulls the current station, sets the state back to selection state
 	 */
 	public void reset() {
 		state = selectionState;
 		chunks = new LinkedList<TrackChunk>();
 		//Must reset the current station before nulling the field
-		currentStation.reset();
-		currentStation = null;
+		if (currentStation != null) {
+			currentStation.reset();
+			currentStation = null;
+		}
+		//Reset stations field
+		stations = new ArrayList<Station>();
 	}
 	
 	/**
