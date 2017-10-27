@@ -76,8 +76,6 @@ public class StationTest {
 	private static final String TITLE_ERROR = "Track title cannot be null";
 	/** Bad artist error message */
 	private static final String ARTIST_ERROR = "Artist cannot be null";
-	/** Bad chunk error message */
-	private static final String CHUNK_ERROR = "Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long";
 	/** Test track ID */
 	private static final int TRACK_ID_1 = 1;
 	/** Test track artist */

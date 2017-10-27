@@ -50,8 +50,6 @@ public class AudioTrackTest {
 	private static final String TITLE_ERROR = "Track title cannot be null";
 	/** Bad artist error message */
 	private static final String ARTIST_ERROR = "Artist cannot be null";
-	/** Bad chunk error message */
-	private static final String CHUNK_ERROR = "Invalid track chunk, either contains invalid hexadecimal digits or is not 8 characters long";
 	/** Bad chunk index error message */
 	private static final String INDEX_ERROR = "Chunk index cannot be less than zero or greater than the size of the chunk collection";
 	/** Empty chunk collection error message */
