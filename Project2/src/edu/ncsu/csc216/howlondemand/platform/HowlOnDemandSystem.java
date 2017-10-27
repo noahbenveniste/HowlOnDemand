@@ -116,6 +116,10 @@ public class HowlOnDemandSystem {
 		//Get a list of StationXML objects from the Stations if the reader read in the objects successfully from the file
 		List<StationXML> temp = stationsReader.getStations();
 		
+		if (temp.size() > STATION_CAPACITY) {
+			throw new IllegalArgumentException("HowlOnDemandSystem can accommodate up to 9 stations");
+		}
+		
 		//Attempt to process the StationXML objects and add them to the stations collection
 		for (int i = 0; i < temp.size(); i++) {
 			try {
@@ -161,6 +165,9 @@ public class HowlOnDemandSystem {
 	 * @return the current audio track
 	 */
 	public AudioTrack getCurrentAudioTrack() {
+		if (currentStation == null) {
+			throw new IllegalArgumentException("Current station not set");
+		}
 		return currentStation.getCurrentAudioTrack();
 	}
 	
