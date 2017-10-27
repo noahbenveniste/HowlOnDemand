@@ -711,8 +711,13 @@ public class HowlOnDemandSystem {
 		 */
 		@Override
 		public void updateState(Command c) {
-			// TODO Auto-generated method stub
-			
+			if (c.getCommand() == CommandValue.SELECT_STATION) {
+				reset();
+				
+			} else {
+				//Any other command is invalid
+				throw new UnsupportedOperationException(c.getCommand().toString() + " is not a valid command for " + this.getStateName());
+			}
 		}
 
 		/**
@@ -720,8 +725,7 @@ public class HowlOnDemandSystem {
 		 */
 		@Override
 		public String getStateName() {
-			// TODO Auto-generated method stub
-			return null;
+			return QUIT_NAME;
 		}
 	}
 	
