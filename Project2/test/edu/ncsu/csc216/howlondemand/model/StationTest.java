@@ -145,13 +145,13 @@ public class StationTest {
 		s = null;
 	}
 	
-	/**
-	 * Test for from-scratch constructor
-	 */
-	@Test
-	public void testStationIntStringInt() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for from-scratch constructor
+//	 */
+//	@Test
+//	public void testStationIntStringInt() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for constructor that is passed a StationXML object
@@ -271,44 +271,44 @@ public class StationTest {
 		assertFalse(s.getRepeat());
 	}
 
-	/**
-	 * Test for getId()
-	 */
-	@Test
-	public void testGetId() {
-		System.out.println("Not yet implemented");	}
-
-	/**
-	 * Test for setId()
-	 */
-	@Test
-	public void testSetId() {
-		System.out.println("Not yet implemented");
-	}
-
-	/**
-	 * Test for getTitle()
-	 */
-	@Test
-	public void testGetTitle() {
-		System.out.println("Not yet implemented");
-	}
-
-	/**
-	 * Test for setTitle()
-	 */
-	@Test
-	public void testSetTitle() {
-		System.out.println("Not yet implemented");
-	}
-
-	/**
-	 * Test for getRepeat()
-	 */
-	@Test
-	public void testGetRepeat() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for getId()
+//	 */
+//	@Test
+//	public void testGetId() {
+//		System.out.println("Not yet implemented");	}
+//
+//	/**
+//	 * Test for setId()
+//	 */
+//	@Test
+//	public void testSetId() {
+//		System.out.println("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test for getTitle()
+//	 */
+//	@Test
+//	public void testGetTitle() {
+//		System.out.println("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test for setTitle()
+//	 */
+//	@Test
+//	public void testSetTitle() {
+//		System.out.println("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test for getRepeat()
+//	 */
+//	@Test
+//	public void testGetRepeat() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for toggleRepeat()
@@ -327,13 +327,13 @@ public class StationTest {
 		assertFalse(s.getRepeat());
 	}
 
-	/**
-	 * Test for getShuffle()
-	 */
-	@Test
-	public void testGetShuffle() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for getShuffle()
+//	 */
+//	@Test
+//	public void testGetShuffle() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for toggleShuffle()
@@ -395,13 +395,13 @@ public class StationTest {
 		assertEquals(TRACK_TITLE_1, s.getPlaylist().get(1).getTitle());
 	}
 
-	/**
-	 * Test for hasNextTrack()
-	 */
-	@Test
-	public void testHasNextTrack() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for hasNextTrack()
+//	 */
+//	@Test
+//	public void testHasNextTrack() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for getCurrentAudioTrack()
@@ -422,21 +422,21 @@ public class StationTest {
 		assertFalse(s.hasNextTrack());
 	}
 
-	/**
-	 * Test for getColor()
-	 */
-	@Test
-	public void testGetColor() {
-		System.out.println("Not yet implemented");
-	}
-
-	/**
-	 * Test for setColor()
-	 */
-	@Test
-	public void testSetColor() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for getColor()
+//	 */
+//	@Test
+//	public void testGetColor() {
+//		System.out.println("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test for setColor()
+//	 */
+//	@Test
+//	public void testSetColor() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for getIndex()
@@ -453,21 +453,21 @@ public class StationTest {
 		assertEquals(1, s.getIndex());
 	}
 
-	/**
-	 * Test for setIndex()
-	 */
-	@Test
-	public void testSetIndex() {
-		System.out.println("Not yet implemented");
-	}
-
-	/**
-	 * Test for reset()
-	 */
-	@Test
-	public void testReset() {
-		System.out.println("Not yet implemented");
-	}
+//	/**
+//	 * Test for setIndex()
+//	 */
+//	@Test
+//	public void testSetIndex() {
+//		System.out.println("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test for reset()
+//	 */
+//	@Test
+//	public void testReset() {
+//		System.out.println("Not yet implemented");
+//	}
 
 	/**
 	 * Test for toString()

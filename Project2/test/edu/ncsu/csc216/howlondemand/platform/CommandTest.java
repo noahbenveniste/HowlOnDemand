@@ -16,14 +16,6 @@ public class CommandTest {
 	private Command cmd;
 	
 	/**
-	 * Executes before each test to initialize objects to be used during testing
-	 */
-	@Before
-	public void setUp() {
-		
-	}
-	
-	/**
 	 * test Command() constructor
 	 */
 	@Test
@@ -32,13 +24,13 @@ public class CommandTest {
 		assertEquals(CommandValue.BUFFERING, cmd.getCommand());
 	}
 	
-	/**
-	 * test getCommand()
-	 */
-	@Test
-	public void testGetCommand() {
-		
-	}
+//	/**
+//	 * test getCommand()
+//	 */
+//	@Test
+//	public void testGetCommand() {
+//		
+//	}
 	
 	/**
 	 * test toString()
@@ -48,5 +40,4 @@ public class CommandTest {
 		cmd = new Command(CommandValue.BUFFERING);
 		assertEquals("BUFFERING", cmd.toString());
 	}
-	
 }
