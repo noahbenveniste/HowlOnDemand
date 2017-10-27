@@ -1,7 +1,7 @@
 package edu.ncsu.csc216.howlondemand.platform.enums;
 
 /**
- * 
+ * An enumeration used by Command objects
  * @author Noah Benveniste
  */
 public enum CommandValue {

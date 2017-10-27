@@ -76,6 +76,7 @@ public class AudioTrack extends Multimedia {
 	
 	/**
 	 * Sets the AudioTrack's artist field
+	 * @param artist the artist to set
 	 * @throws IllegalArgumentException if the input is null
 	 */
 	public void setArtist(String artist) {
@@ -97,6 +98,7 @@ public class AudioTrack extends Multimedia {
 	/**
 	 * Sets the chunk index, i.e. the index of the next chunk to be accessed from the
 	 * AudioTrack's chunk collection
+	 * @param idx the index of the next chunk
 	 * @throws IllegalArgumentException if the index is out of bounds i.e. it is negative
 	 * or greater than the size of the chunk collection
 	 */

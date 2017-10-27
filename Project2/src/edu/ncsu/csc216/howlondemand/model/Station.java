@@ -8,7 +8,11 @@ import edu.ncsu.csc216.audioxml.xml.MalformedTrackException;
 import edu.ncsu.csc216.audioxml.xml.StationXML;
 
 /**
- * 
+ * A class for a Station that can be instantiated from a StationXML object. A Station
+ * stores a collection of AudioTrack objects (which are created from the StationXML's 
+ * AudioTrackXML collection) as well as basic information such as id, title and color.
+ * The station also keeps track of the index of the current track being streamed, as well
+ * as the current shuffle and repeat toggle status.
  * @author Noah Benveniste
  */
 public class Station {

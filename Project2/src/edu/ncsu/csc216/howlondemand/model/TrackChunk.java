@@ -26,6 +26,7 @@ public class TrackChunk {
 	/**
 	 * Constructor that creates a TrackChunk with a specified chunk string. A chunk string must contain
 	 * exactly 8 valid hexadecimal digits i.e. 0-9,A-F.
+	 * @param chunk the string for the chunk
 	 * @throws MalformedTrackException if the chunk string does not meet the aforementioned standards.
 	 */
 	public TrackChunk(String chunk) throws MalformedTrackException {
@@ -64,10 +65,8 @@ public class TrackChunk {
 		String regex = "([0-9]|[A-F]){8}"; //Indicates that the chunk must contain exactly 8 characters that can range from 0-9,A-F
 		if (chunk == null) {
 			return false;
-		} else if (!chunk.matches(regex)) {
-			return false;
 		} else {
-			return true;
+			return (chunk.matches(regex));
 		}
 	}
 	
