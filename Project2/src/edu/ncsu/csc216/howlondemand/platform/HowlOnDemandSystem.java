@@ -543,10 +543,10 @@ public class HowlOnDemandSystem {
 					if (bufferHasRoom()) {
 						addTrackChunkToBuffer(getCurrentAudioTrack().getNextChunk());
 					} else {
-						state = playWithoutBufferingState;
+						state = stopWithoutBufferingState;
 					}
 				} else {
-					state = playWithoutBufferingState;
+					state = stopWithoutBufferingState;
 				}
 				
 			} else if (c.getCommand() == CommandValue.NOT_BUFFERING) {
