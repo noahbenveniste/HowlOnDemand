@@ -167,6 +167,6 @@ public class AudioTrack extends Multimedia {
 	 */
 	@Override
 	public String toString() {
-		return "" + getId() + "," + getTitle() + "," + getArtist();
+		return "AudioTrack [id=" + getId() + ", title=" + getTitle() + ", artist=" + getArtist() + "]";
 	}
 }
