@@ -191,11 +191,11 @@ public class HowlOnDemandSystem {
 	
 	/**
 	 * Returns a string that contains the FSM's current state and the number of
-	 * TrackChunks in the buffer in the form <current state>,<number of chunks in buffer>
+	 * TrackChunks in the buffer in the form HowlOnDemandSystem [state=<currentState>, chunks.size()=<number of chunks>]
 	 * @return a string that contains the current state and the number of elements in the buffer
 	 */
 	public String toString() {
-		return state.toString() + "," + getChunkSize();
+		return "HowlOnDemandSystem [state=" + getState().getStateName() + ", chunks.size()=" + getChunkSize() + "]";
 	}
 	
 	/**

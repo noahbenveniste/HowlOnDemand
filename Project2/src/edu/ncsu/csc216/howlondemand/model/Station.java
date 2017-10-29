@@ -228,6 +228,6 @@ public class Station {
 	 * @return the string representation of the Station
 	 */
 	public String toString() {
-		return "" + getId() + "," + getTitle() + "," + getColor();
+		return "Station " + "\"" + getTitle() + "\"";
 	}
 }

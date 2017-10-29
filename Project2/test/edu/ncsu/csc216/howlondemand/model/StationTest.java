@@ -475,6 +475,6 @@ public class StationTest {
 	@Test
 	public void testToString() {
 		s = new Station(STATION_ID, STATION_TITLE, STATION_COLOR);
-		assertEquals("1,My Station,0", s.toString());
+		assertEquals("Station \"My Station\"", s.toString());
 	}
 }
