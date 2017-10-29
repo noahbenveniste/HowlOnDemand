@@ -72,12 +72,12 @@ public class HowlOnDemandSystemTest {
 			h.loadStationsFromFile(INVALID_FILE);
 			fail();
 		} catch (IllegalArgumentException e) {
-			fail();
+			assertEquals(0, h.getStations().size());
+			assertEquals("Bad chunk data", e.getMessage());
 		} catch (StationIOException e) {
 			fail();
 		} catch ( MalformedTrackException e) {
-			assertEquals(0, h.getStations().size());
-			assertEquals("Bad chunk data", e.getMessage());
+			fail();
 		}
 		
 		//Try loading a valid station
@@ -93,13 +93,13 @@ public class HowlOnDemandSystemTest {
 		assertEquals(9, h.getStations().size());
 	}
 
-	/**
-	 * Test method for getStations()
-	 */
-	@Test
-	public void testGetStations() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for getStations()
+//	 */
+//	@Test
+//	public void testGetStations() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for loadStation()
@@ -196,21 +196,21 @@ public class HowlOnDemandSystemTest {
 		assertEquals("Selection", h.getState().getStateName());
 	}
 
-	/**
-	 * Test method for toString()
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for toString()
+//	 */
+//	@Test
+//	public void testToString() {
+//		fail("Not yet implemented");
+//	}
 
-	/**
-	 * Test method for getChunkSize()
-	 */
-	@Test
-	public void testGetChunkSize() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for getChunkSize()
+//	 */
+//	@Test
+//	public void testGetChunkSize() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for consumeTrackChunk()
@@ -265,13 +265,13 @@ public class HowlOnDemandSystemTest {
 		assertFalse(h.hasNextTrackChunk());
 	}
 
-	/**
-	 * Test method for hasNextTrackChunk()
-	 */
-	@Test
-	public void testHasNextTrackChunk() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for hasNextTrackChunk()
+//	 */
+//	@Test
+//	public void testHasNextTrackChunk() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for addTrackChunkToBuffer()
@@ -296,21 +296,21 @@ public class HowlOnDemandSystemTest {
 		assertEquals(30, h.getChunkSize());
 	}
 
-	/**
-	 * Test method for bufferHasRoom()
-	 */
-	@Test
-	public void testBufferHasRoom() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for getState()
-	 */
-	@Test
-	public void testGetState() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for bufferHasRoom()
+//	 */
+//	@Test
+//	public void testBufferHasRoom() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for getState()
+//	 */
+//	@Test
+//	public void testGetState() {
+//		fail("Not yet implemented");
+//	}
 
 	/**
 	 * Test method for selection state
