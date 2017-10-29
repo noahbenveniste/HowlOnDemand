@@ -431,14 +431,14 @@ public class HowlOnDemandSystemTest {
 		
 		Command cSelectStation = new Command(CommandValue.SELECT_STATION);
 		Command cBuffering = new Command(CommandValue.BUFFERING);
-		Command cNotBuffering = new Command(CommandValue.NOT_BUFFERING);
-		Command cStop = new Command(CommandValue.STOP);
+//		Command cNotBuffering = new Command(CommandValue.NOT_BUFFERING);
+//		Command cStop = new Command(CommandValue.STOP);
 		Command cPlay = new Command(CommandValue.PLAY);
 		Command cFinishTrack = new Command(CommandValue.FINISH_TRACK);
 		Command cFinishStation = new Command(CommandValue.FINISH_STATION);
-		Command cReturn = new Command(CommandValue.RETURN);
-		Command cSkipForward = new Command(CommandValue.SKIP_FORWARD);
-		Command cSkipBackward = new Command(CommandValue.SKIP_BACKWARD);
+//		Command cReturn = new Command(CommandValue.RETURN);
+//		Command cSkipForward = new Command(CommandValue.SKIP_FORWARD);
+//		Command cSkipBackward = new Command(CommandValue.SKIP_BACKWARD);
 		
 		//Set the first station in the station collection as the current station
 		h.loadStation(h.getStations().get(0));
