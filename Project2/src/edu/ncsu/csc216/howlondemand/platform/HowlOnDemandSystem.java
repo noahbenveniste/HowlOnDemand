@@ -111,8 +111,8 @@ public class HowlOnDemandSystem {
 	 * Creates a collection of Stations from an XML file.
 	 * @param fileName the name of the file
 	 * @throws StationIOException if there is an issue reading in the XML file
-	 * @throw IllegalArgumentException if any of the stations contain bad track data
-	 * @throw MalformedTrackException 
+	 * @throw IllegalArgumentException if more than 9 stations are loaded
+	 * @throw MalformedTrackException if any of the stations contain bad track data
 	 */
 	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
 		//Reset stations field
@@ -124,16 +124,12 @@ public class HowlOnDemandSystem {
 		List<StationXML> temp = stationsReader.getStations();
 		
 		if (temp.size() > STATION_CAPACITY) {
-			throw new IllegalArgumentException("HowlOnDemandSystem can accommodate up to 9 stations");
+			throw new IllegalArgumentException("HowlOnDemandSystem can only accommodate up to 9 stations");
 		}
 		
 		//Attempt to process the StationXML objects and add them to the stations collection
 		for (int i = 0; i < temp.size(); i++) {
-			try {
-				stations.add(new Station(temp.get(i)));
-			} catch (MalformedTrackException e) {
-				throw new IllegalArgumentException(e.getMessage());
-			}
+			stations.add(new Station(temp.get(i))); //Throws MalformedTrackException if the Station contains bad data
 		}
 	}
 	
@@ -195,11 +191,11 @@ public class HowlOnDemandSystem {
 	
 	/**
 	 * Returns a string that contains the FSM's current state and the number of
-	 * TrackChunks in the buffer in the form <current state> <number of chunks in buffer>
+	 * TrackChunks in the buffer in the form <current state>,<number of chunks in buffer>
 	 * @return a string that contains the current state and the number of elements in the buffer
 	 */
 	public String toString() {
-		return state.toString() + " " + getChunkSize();
+		return state.toString() + "," + getChunkSize();
 	}
 	
 	/**
@@ -284,7 +280,7 @@ public class HowlOnDemandSystem {
 		public void updateState(Command c) {
 			if (c.getCommand() == CommandValue.PLAY) {
 				//Add the first chunk from the current track from the current station to the buffer
-				addTrackChunkToBuffer(currentStation.getCurrentAudioTrack().getNextChunk());
+				addTrackChunkToBuffer(getCurrentAudioTrack().getNextChunk());
 				//Update the state to PLAY WITH BUFFERING
 				state = playWithBufferingState;
 			} else {
