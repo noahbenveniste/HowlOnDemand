@@ -72,7 +72,7 @@ public class HowlOnDemandSystemTest {
 			h.loadStationsFromFile(INVALID_FILE);
 			fail();
 		} catch (IllegalArgumentException e) {
-			
+			fail();
 		} catch (StationIOException e) {
 			fail();
 		} catch ( MalformedTrackException e) {
@@ -499,44 +499,44 @@ public class HowlOnDemandSystemTest {
 		assertEquals("Playing with Buffering", h.getState().getStateName());
 	}
 	
-	/**
-	 * Test method for play without buffering state
-	 */
-	@Test
-	public void testPlayWithoutBufferingState() {
-		
-	}
-	
-	/**
-	 * Test method for stop with buffering state
-	 */
-	@Test
-	public void testStopWithBufferingState() {
-		
-	}
-	
-	/**
-	 * Test method for stop without buffering state
-	 */
-	@Test
-	public void testStopWithoutBufferingState() {
-		
-	}
-	
-	/**
-	 * Test method for quit state
-	 */
-	@Test
-	public void testQuitState() {
-		
-	}
-	
-	/**
-	 * Test method for finished state
-	 */
-	@Test
-	public void testFinishedState() {
-		
-	}
-	
+//	/**
+//	 * Test method for play without buffering state
+//	 */
+//	@Test
+//	public void testPlayWithoutBufferingState() {
+//		
+//	}
+//	
+//	/**
+//	 * Test method for stop with buffering state
+//	 */
+//	@Test
+//	public void testStopWithBufferingState() {
+//		
+//	}
+//	
+//	/**
+//	 * Test method for stop without buffering state
+//	 */
+//	@Test
+//	public void testStopWithoutBufferingState() {
+//		
+//	}
+//	
+//	/**
+//	 * Test method for quit state
+//	 */
+//	@Test
+//	public void testQuitState() {
+//		
+//	}
+//	
+//	/**
+//	 * Test method for finished state
+//	 */
+//	@Test
+//	public void testFinishedState() {
+//		
+//	}
+//	
 }
