@@ -416,9 +416,7 @@ public class StationTest {
 		assertTrue(s.hasNextTrack());
 		assertEquals(TRACK_TITLE_1, s.getCurrentAudioTrack().getTitle());
 		s.setIndex(1);
-		assertTrue(s.hasNextTrack());
 		assertEquals(TRACK_TITLE_2, s.getCurrentAudioTrack().getTitle());
-		s.setIndex(2);
 		assertFalse(s.hasNextTrack());
 	}
 
