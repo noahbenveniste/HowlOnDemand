@@ -32,6 +32,26 @@ public class CommandTest {
 //	}
 	
 	/**
+	 * test for valueOf()
+	 */
+	@Test
+	public void testValueOf() {
+		cmd = new Command(CommandValue.BUFFERING);
+		assertEquals(cmd.getCommand().toString(), CommandValue.valueOf("BUFFERING").toString());
+	}
+	
+	/**
+	 * test for values()
+	 */
+	@Test
+	public void testValues() {
+		CommandValue[] v1 = CommandValue.values();
+		CommandValue[] v2 = new CommandValue[10];
+		v2[0] = CommandValue.SELECT_STATION;
+		assertEquals(v2[0], v1[0]);
+	}
+	
+	/**
 	 * test toString()
 	 */
 	@Test
