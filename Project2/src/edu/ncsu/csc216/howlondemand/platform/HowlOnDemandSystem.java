@@ -367,14 +367,17 @@ public class HowlOnDemandSystem {
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else if (currentStation.hasNextTrack()) {
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current++);
+					current++;
+					currentStation.setIndex(current);
 					//Set the station's new current track's chunk index to 0
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//Current station has no more tracks, check if the playlist is set to repeat
 					if (currentStation.getRepeat()) {
@@ -383,6 +386,7 @@ public class HowlOnDemandSystem {
 						currentStation.getCurrentAudioTrack().setChunkIndex(0);
 						//Clear the buffer
 						chunks = new LinkedList<TrackChunk>();
+						state = playWithBufferingState; //ADDED FOR TESTING
 					} else {
 						state = finishedState;
 					}
@@ -394,13 +398,16 @@ public class HowlOnDemandSystem {
 					//If the first track is playing, restart it
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//If anything other than the first track is playing, decrement the track index
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current--);
+					current--;
+					currentStation.setIndex(current);
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				}
 				
 				
@@ -474,14 +481,17 @@ public class HowlOnDemandSystem {
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else if (currentStation.hasNextTrack()) {
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current++);
+					current++;
+					currentStation.setIndex(current);
 					//Set the station's new current track's chunk index to 0
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//Current station has no more tracks, check if the playlist is set to repeat
 					if (currentStation.getRepeat()) {
@@ -490,6 +500,7 @@ public class HowlOnDemandSystem {
 						currentStation.getCurrentAudioTrack().setChunkIndex(0);
 						//Clear the buffer
 						chunks = new LinkedList<TrackChunk>();
+						state = playWithBufferingState; //ADDED FOR TESTING
 					} else {
 						state = finishedState;
 					}
@@ -501,13 +512,16 @@ public class HowlOnDemandSystem {
 					//If the first track is playing, restart it
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//If anything other than the first track is playing, decrement the track index
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current--);
+					current--;
+					currentStation.setIndex(current);
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				}
 				
 			} else {
@@ -575,14 +589,17 @@ public class HowlOnDemandSystem {
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else if (currentStation.hasNextTrack()) {
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current++);
+					current++;
+					currentStation.setIndex(current);
 					//Set the station's new current track's chunk index to 0
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//Current station has no more tracks, check if the playlist is set to repeat
 					if (currentStation.getRepeat()) {
@@ -591,6 +608,7 @@ public class HowlOnDemandSystem {
 						currentStation.getCurrentAudioTrack().setChunkIndex(0);
 						//Clear the buffer
 						chunks = new LinkedList<TrackChunk>();
+						state = playWithBufferingState; //ADDED FOR TESTING
 					} else {
 						state = finishedState;
 					}
@@ -602,13 +620,16 @@ public class HowlOnDemandSystem {
 					//If the first track is playing, restart it
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//If anything other than the first track is playing, decrement the track index
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current--);
+					current--;
+					currentStation.setIndex(current);
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				}
 				
 			} else {
@@ -674,14 +695,17 @@ public class HowlOnDemandSystem {
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else if (currentStation.hasNextTrack()) {
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current++);
+					current++;
+					currentStation.setIndex(current);
 					//Set the station's new current track's chunk index to 0
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//Current station has no more tracks, check if the playlist is set to repeat
 					if (currentStation.getRepeat()) {
@@ -690,6 +714,7 @@ public class HowlOnDemandSystem {
 						currentStation.getCurrentAudioTrack().setChunkIndex(0);
 						//Clear the buffer
 						chunks = new LinkedList<TrackChunk>();
+						state = playWithBufferingState; //ADDED FOR TESTING
 					} else {
 						state = finishedState;
 					}
@@ -701,13 +726,16 @@ public class HowlOnDemandSystem {
 					//If the first track is playing, restart it
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				} else {
 					//If anything other than the first track is playing, decrement the track index
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current--);
+					current--;
+					currentStation.setIndex(current);
 					getCurrentAudioTrack().setChunkIndex(0);
 					chunks = new LinkedList<TrackChunk>();
+					state = playWithBufferingState; //ADDED FOR TESTING
 				}
 				
 			} else {
@@ -786,7 +814,8 @@ public class HowlOnDemandSystem {
 				} else if (currentStation.hasNextTrack()) {
 					//Increment the current index
 					int current = currentStation.getIndex();
-					currentStation.setIndex(current++);
+					current++;
+					currentStation.setIndex(current);
 					//Set the station's new current track's chunk index to 0
 					currentStation.getCurrentAudioTrack().setChunkIndex(0);
 					//Clear the buffer
