@@ -160,7 +160,7 @@ public class Station {
 	 * @return true if there are more tracks in the playlist to index, false otherwise
 	 */
 	public boolean hasNextTrack() {
-		return (index < playlist.size()-1);
+		return (index < playlist.size() - 1);
 	}
 	
 	/**
