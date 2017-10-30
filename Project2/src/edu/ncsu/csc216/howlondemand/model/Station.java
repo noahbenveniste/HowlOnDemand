@@ -160,7 +160,7 @@ public class Station {
 	 * @return true if there are more tracks in the playlist to index, false otherwise
 	 */
 	public boolean hasNextTrack() {
-		return (index < playlist.size());
+		return (index < playlist.size()-1);
 	}
 	
 	/**
@@ -206,8 +206,8 @@ public class Station {
 	 * @throws IllegalArgumentException if the index is less than zero
 	 */
 	public void setIndex(int index) {
-		if (index < 0) {
-			throw new IllegalArgumentException("Invalid index, cannot be negative");
+		if (index < 0 || index >= playlist.size()) {
+			throw new IllegalArgumentException("Invalid index, must be between 0 and playlist.size - 1");
 		} else {
 			this.index = index;
 		}
