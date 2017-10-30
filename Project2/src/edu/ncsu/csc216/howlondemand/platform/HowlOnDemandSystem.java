@@ -111,8 +111,8 @@ public class HowlOnDemandSystem {
 	 * Creates a collection of Stations from an XML file.
 	 * @param fileName the name of the file
 	 * @throws StationIOException if there is an issue reading in the XML file
-	 * @throw IllegalArgumentException if more than 9 stations are loaded
-	 * @throw MalformedTrackException if any of the stations contain bad track data
+	 * @throws IllegalArgumentException if more than 9 stations are loaded
+	 * @throws MalformedTrackException if any of the stations contain bad track data
 	 */
 	public void loadStationsFromFile(String fileName) throws StationIOException, MalformedTrackException {
 		//Reset stations field
@@ -191,7 +191,7 @@ public class HowlOnDemandSystem {
 	
 	/**
 	 * Returns a string that contains the FSM's current state and the number of
-	 * TrackChunks in the buffer in the form HowlOnDemandSystem [state=<currentState>, chunks.size()=<number of chunks>]
+	 * TrackChunks in the buffer in the form HowlOnDemandSystem [state=currentState, chunks.size()=number of chunks]
 	 * @return a string that contains the current state and the number of elements in the buffer
 	 */
 	public String toString() {

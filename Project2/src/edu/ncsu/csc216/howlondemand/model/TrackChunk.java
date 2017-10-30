@@ -18,6 +18,7 @@ public class TrackChunk {
 	 * Default constructor for the TrackChunk. Chunk field is initialized 00000000
 	 * by default to avoid NullPointerExceptions. The chunk field must be set with a call to
 	 * setChunk() if this constructor is used.
+	 * @throws MalformedTrackException if chunk data is bad
 	 */
 	public TrackChunk() throws MalformedTrackException {
 		this.chunk = DEFAULT;

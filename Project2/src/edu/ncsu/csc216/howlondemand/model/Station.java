@@ -141,7 +141,7 @@ public class Station {
 
 	/**
 	 * Gets the Station's playlist of AudioTracks
-	 * @return the playlist as an ArrayList<AudioTrack>
+	 * @return the playlist as an ArrayList of AudioTracks
 	 */
 	public ArrayList<AudioTrack> getPlaylist() {
 		return playlist;
@@ -224,7 +224,7 @@ public class Station {
 	}
 
 	/**
-	 * Returns a string representation of the Station in the form of <ID>,<Title>,<Color>
+	 * Returns a string representation of the Station in the form of Station "thisTitle"
 	 * @return the string representation of the Station
 	 */
 	public String toString() {

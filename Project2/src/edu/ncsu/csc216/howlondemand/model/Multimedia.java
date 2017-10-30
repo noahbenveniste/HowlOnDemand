@@ -37,7 +37,7 @@ public abstract class Multimedia {
 	/**
 	 * Sets the ID number
 	 * @param id the ID number to set
-	 * @throws MalformedTrackException if the ID is negative
+	 * @throws IllegalArgumentException if the ID is negative
 	 */
 	public void setId(int id) throws IllegalArgumentException {
 		if (id < 0) {
@@ -58,7 +58,7 @@ public abstract class Multimedia {
 	/**
 	 * Sets the title of the Multimedia object
 	 * @param title the title to set
-	 * @throws MalformedTrackException if the title is null
+	 * @throws IllegalArgumentException if the title is null
 	 */
 	public void setTitle(String title) throws IllegalArgumentException {
 		if (title == null) {
@@ -86,7 +86,7 @@ public abstract class Multimedia {
 	/**
 	 * Adds a chunk to the Multimedia object's chunk collection
 	 * @param c the chunk to add
-	 * @throws MalformedTrackException
+	 * @throws MalformedTrackException if the chunk data is bad
 	 */
 	public abstract void addChunk(TrackChunk c) throws MalformedTrackException ;
 	
