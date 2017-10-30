@@ -196,13 +196,20 @@ public class HowlOnDemandSystemTest {
 		assertEquals("Selection", h.getState().getStateName());
 	}
 
-//	/**
-//	 * Test method for toString()
-//	 */
-//	@Test
-//	public void testToString() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for toString()
+	 */
+	@Test
+	public void testToString() {
+		//Load the station data
+		try {
+			h.loadStationsFromFile(VALID_FILE);
+		} catch (MalformedTrackException | StationIOException e) {
+			fail();
+		}
+		
+		assertEquals("HowlOnDemandSystem [state=Selection, chunks.size()=0]", h.toString());
+	}
 
 //	/**
 //	 * Test method for getChunkSize()
